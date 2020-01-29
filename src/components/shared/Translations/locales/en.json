@@ -1,0 +1,9 @@
+{
+  "results.empty": "Sorry but no results found",
+  "nav.search.placeholder": "Search artists, competitions, models...",
+  "nav.account.placeholder": "Account",
+  "artists.title": "Artists",
+  "snackbars.common.success.item.created": "Item has been created successfully",
+  "snackbars.common.success.item.updated": "Item has been updated successfully",
+  "snackbars.common.success.item.deleted": "Item has been deleted successfully"
+}

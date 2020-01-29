@@ -1,0 +1,32 @@
+{
+  "header.engineering.derogation": "Demander une dérogation",
+  "header.engineering.derogation.backlog": "Arriéré de dérogation",
+
+  "form.derogation.title": "Titre",
+  "form.derogation.fleetType": "Parc affecté",
+  "form.derogation.asset": "Atout",
+  "form.derogation.category": "Catégorie",
+  "form.derogation.component": "Composants affectés",
+  "form.derogation.document": "Document(s)/Procédure(s) applicable",
+  "form.derogation.reason": "Raison motivant la demande de dérogation",
+  "form.derogation.plan": "Planifier la méthode de clôture de la dérogation",
+  "constants.derogation.category.asset_condition": "Condition du train",
+  "constants.derogation.category.documentation_procedure": "Documentation - Procédure",
+  "constants.derogation.category.documentation_vmi": "Documentation - VMI",
+  "constants.derogation.category.maintenance_extension_availability": "Extension de maintenance - Disponibilité",
+  "constants.derogation.category.maintenance_extension_manpower": "Extension de maintenance - Manpower",
+  "constants.derogation.category.maintenance_extension_parts_materials": "Extension de maintenance - Pièces / Matériels",
+  "constants.derogation.category.maintenance_extension_tools": "Extension de maintenance - Outillage",
+  "constants.derogation.category.modification_availability": "Modification - Disponibilité",
+  "constants.derogation.category.modification_engineering": "Modification - Ingénierie",
+  "constants.derogation.category.modification_parts_materials": "Modification - Pièces/Matériaux",
+  "constants.derogation.category.modification_tooling": "Modification - Outillage",
+  "constants.derogation.category.potentials_manpower": "Potentiels - Manpower",
+  "constants.derogation.category.potentials_availability": "Potentiels - Disponibilité",
+  "constants.derogation.category.potentials_parts_materials": "Potentiels - Pièces / Matériaux",
+  "constants.derogation.category.potentials_tooling": "Potentials - Outillage",
+
+  "form.button.submit": "Soumettre",
+  "action.button.submit": "Soumettre",
+  "action.button.cancel": "Annuler"
+}
