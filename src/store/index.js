@@ -1,24 +1,15 @@
 import { action, createStore } from 'easy-peasy'
 
+import loading from './loading'
+import posts from './posts'
+import categories from './categories'
+import tags from './tags'
+
 const store = createStore({
-  posts: {
-    posts: [],
-    setPosts: action((state, payload) => {
-      state.posts = payload
-    }),
-  },
-  categories: {
-    categories: [],
-    setCategories: action((state, payload) => {
-      state.categories = payload
-    }),
-  },
-  tags: {
-    tags: [],
-    setTags: action((state, payload) => {
-      state.tags = payload
-    }),
-  },
+  loading,
+  posts,
+  categories,
+  tags,
 })
 
 export default store

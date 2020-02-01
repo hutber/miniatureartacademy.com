@@ -1,4 +1,5 @@
 import config from '../../config'
+import TransformDataClass from '../apollo/apollo.class'
 import errorHandling from './errorHandling'
 
 const whenMatchedForceAPIBodyToBeObject = [302, 404]
@@ -43,6 +44,21 @@ async function FetchApi({ dispatch = () => {}, postType = 'pages', body = {}, me
     errorHandling(response, dispatch)
     return response
   }
+}
+
+export const getQuery = async QUERY => {
+  const getData = {
+    url: 'graphql',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: {
+      query: QUERY,
+    },
+  }
+  const { data: queryData } = await FetchApi(getData)
+  return new TransformDataClass(queryData).start()
 }
 
 export default FetchApi

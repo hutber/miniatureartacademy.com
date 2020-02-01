@@ -89,10 +89,10 @@ export default function RecipeReviewCard({ img, name, date, cat, tags, position 
         {img && <CardMedia className={classes.media} image={img} title={name} />}
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {cat && cat.map(item => <Chip label={item.name} />)}
+            {cat && cat.map(item => <Chip key={item.name} label={item.name} />)}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {tags && tags.map(item => <Chip label={item.name} />)}
+            {tags && tags.map(item => <Chip key={item.name} label={item.name} />)}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

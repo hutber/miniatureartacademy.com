@@ -1,7 +1,7 @@
 import React from 'react'
 import { StoreProvider } from 'easy-peasy'
 
-import Search from './Search'
+import Search from './components/Search'
 import easyStore from './store'
 
 function App() {

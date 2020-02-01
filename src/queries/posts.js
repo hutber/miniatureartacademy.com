@@ -1,5 +1,5 @@
-export const POSTS = `query {
-  posts {
+export const POSTS =  `query {
+posts {
     edges {
       node {
         title
@@ -34,6 +34,10 @@ export const POSTS = `query {
       }
     }
   }
+}
+`
+
+export const CATEOGIRES = `query {
     categories {
     edges {
       node {
@@ -42,6 +46,10 @@ export const POSTS = `query {
       }
     }
   }
+}
+`
+
+export const TAGS = `query {
   tags {
     edges {
       node {
