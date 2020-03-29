@@ -1,83 +1,71 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Select from 'react-select'
-import { useTheme } from '@material-ui/core/styles'
-import NoSsr from '@material-ui/core/NoSsr'
+import { makeStyles } from '@material-ui/core/styles'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import ListItemText from '@material-ui/core/ListItemText'
+import Select from '@material-ui/core/Select'
+import Checkbox from '@material-ui/core/Checkbox'
 
-import useStyles from './styles'
-import NoOptionsMessage from './comps/NoOptionsMessage'
-import Control from './comps/Control'
-import Option from './comps/Option'
-import Placeholder from './comps/Placeholder'
-import SingleValue from './comps/SingleValue'
-import ValueContainer from './comps/ValueContainer'
-import MultiValue from './comps/MultiValue'
-import Menu from './comps/Menu'
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    width: '100%',
+  },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  chip: {
+    margin: 2,
+  },
+  noLabel: {
+    marginTop: theme.spacing(3),
+  },
+}))
 
-const components = {
-  Control,
-  Menu,
-  MultiValue,
-  NoOptionsMessage,
-  Option,
-  Placeholder,
-  SingleValue,
-  ValueContainer,
+const ITEM_HEIGHT = 348
+const ITEM_PADDING_TOP = 8
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
 }
 
-export default function AutoComplete({ data, label = 'Select', placeholder = 'Select Me' }) {
+export default function MultipleSelect({ data, label, action }) {
   const classes = useStyles()
-  const theme = useTheme()
-  const [multi, setMulti] = React.useState(null)
-
-  const handleChangeMulti = value => {
-    setMulti(value)
-  }
-
-  const selectStyles = {
-    input: base => ({
-      ...base,
-      color: theme.palette.text.primary,
-      '& input': {
-        font: 'inherit',
-      },
-    }),
+  const [personName, setPersonName] = React.useState([])
+  const handleChange = event => {
+    setPersonName(event.target.value)
+    // action()
   }
 
   return (
-    <div className={classes.root}>
-      <NoSsr>
+    <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-checkbox-label">{label}</InputLabel>
         <Select
-          classes={classes}
-          styles={selectStyles}
-          inputId="react-select-multiple"
-          TextFieldProps={{
-            label,
-            InputLabelProps: {
-              htmlFor: 'react-select-multiple',
-              shrink: true,
-            },
-          }}
-          placeholder={placeholder}
-          options={data}
-          components={components}
-          value={multi}
-          onChange={handleChangeMulti}
-          isMulti
-        />
-      </NoSsr>
+          labelId="demo-mutiple-checkbox-label"
+          id="artists"
+          multiple
+          value={personName}
+          onChange={handleChange}
+          input={<Input />}
+          renderValue={selected => selected.join(', ')}
+          MenuProps={MenuProps}
+        >
+          {data.map(({ name }) => (
+            <MenuItem key={name} value={name}>
+              <Checkbox checked={personName.indexOf(name) > -1} />
+              <ListItemText primary={name} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </div>
   )
-}
-
-Menu.propTypes = {
-  /**
-   * The children to be rendered.
-   */
-  children: PropTypes.element.isRequired,
-  /**
-   * Props to be passed to the menu wrapper.
-   */
-  innerProps: PropTypes.object.isRequired,
-  selectProps: PropTypes.object.isRequired,
 }

@@ -30,6 +30,9 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '56.25%', // 16:9
   },
   header: {
+    '& img': {
+      width: '100%',
+    },
     position: 'relative',
     '&::before': {
       position: 'absolute',

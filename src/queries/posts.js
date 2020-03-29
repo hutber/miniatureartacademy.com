@@ -37,6 +37,26 @@ posts {
 }
 `
 
+export const ARTISTS = `query {
+  categories(where: {
+    termTaxonomId: [132]
+  }) {
+    edges {
+      node {
+        children {
+          edges {
+            node {
+              id
+              name
+              databaseId
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
 export const CATEOGIRES = `query {
     categories {
     edges {

@@ -9,5 +9,7 @@ export default makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    left: 0,
+    top: 0,
   },
 }))
