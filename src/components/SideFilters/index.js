@@ -33,7 +33,7 @@ export default function ListDividers() {
   })
   return (
     <>
-      <AutoComplete data={authors} label="Artists" placeholder="Select your Artists(s)" action={setArtists} />
+      {/*<AutoComplete data={authors} label="Artists" placeholder="Select your Artists(s)" action={setArtists} />*/}
       <AutoComplete data={tags} label="Tags" placeholder="Select your Artists(s)" action={setTags} />
       <AutoComplete data={categories} label="Categories" placeholder="Select your Artists(s)" action={setCategories} />
       <Button>Submit</Button>

@@ -1,4 +1,4 @@
-export const POSTS =  `query {
+export const POSTSRAW = `
 posts {
     edges {
       node {
@@ -34,11 +34,14 @@ posts {
       }
     }
   }
+`
+export const POSTS = `query {
+  ${POSTSRAW}
 }
 `
 
-export const ARTISTS = `query {
-  categories(where: {
+export const ARTISTSRAW = `
+  artists: categories(where: {
     termTaxonomId: [132]
   }) {
     edges {
@@ -55,9 +58,13 @@ export const ARTISTS = `query {
       }
     }
   }
+`
+
+export const ARTISTS = `query {
+  ${ARTISTSRAW}
 }
 `
-export const CATEOGIRES = `query {
+export const CATEOGIRESRAW = `
     categories {
     edges {
       node {
@@ -66,10 +73,13 @@ export const CATEOGIRES = `query {
       }
     }
   }
+`
+export const CATEOGIRES = `query {
+  ${CATEOGIRESRAW}
 }
 `
 
-export const TAGS = `query {
+export const TAGSRAW = `
   tags {
     edges {
       node {
@@ -78,4 +88,14 @@ export const TAGS = `query {
       }
     }
   }
+`
+export const TAGS = `query {
+  ${TAGSRAW}
+}`
+
+export const QUERYALL = `query{
+  ${POSTSRAW}
+  ${ARTISTSRAW}
+  ${CATEOGIRESRAW}
+  ${TAGSRAW}
 }`

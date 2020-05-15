@@ -41,6 +41,8 @@ export const isEdge = data => data === 'edges'
 
 export const isNode = data => data === 'nodes'
 
+export const isChildren = data => data === 'children'
+
 export const isNotStringOrNumberOrBoolean = data => {
   return !(typeof data === 'string' || typeof data === 'number' || typeof data === 'boolean')
 }

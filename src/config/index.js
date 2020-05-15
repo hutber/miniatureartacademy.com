@@ -2,7 +2,7 @@ const configSetup = {
   prod: {},
   stage: {},
   local: {
-    url: 'http://miniatureartacademy.com/',
+    url: 'https://miniatureartacademy.com/',
     redirect: '/bad',
   },
 }

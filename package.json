@@ -2,10 +2,11 @@
   "name": "miniatureartacademy.com",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://miniatureartacademy.com/videos/",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-localhost": "PUBLIC_URL=/videos_/ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
