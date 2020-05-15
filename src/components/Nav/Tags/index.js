@@ -1,14 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 
-import AutoComplete from 'components/shared/AutoComplete'
+import Autocomplete from 'components/shared/AutoComplete'
 
 export default function Search() {
-  const { tags } = useStoreState(store => ({
+  const { tags, selectedTags } = useStoreState(store => ({
     tags: store.tags.tags,
+    selectedTags: store.tags.selectedTags,
   }))
-  const { setTags } = useStoreActions(actions => ({
-    setTags: actions.tags.setTags,
+  const { setSelectedTags } = useStoreActions(actions => ({
+    setSelectedTags: actions.tags.setSelectedTags,
   }))
-  return <AutoComplete data={tags} label="Tags" placeholder="Select your Artists(s)" action={setTags} />
+  return (
+    <Autocomplete
+      defaultValue={selectedTags}
+      options={tags}
+      title="Tags"
+      onChange={(el, item) => {
+        setSelectedTags(item)
+      }}
+    />
+  )
 }

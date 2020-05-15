@@ -1,5 +1,5 @@
 export const POSTSRAW = `
-posts {
+posts(where: {categoryIn: "132"},first: 20) {
     edges {
       node {
         title
@@ -16,6 +16,7 @@ posts {
             node {
               id
               name
+              link
             }
           }
         }
@@ -28,6 +29,7 @@ posts {
             node {
               id
               name
+              link
             }
           }
         }
@@ -43,7 +45,7 @@ export const POSTS = `query {
 export const ARTISTSRAW = `
   artists: categories(where: {
     termTaxonomId: [132]
-  }) {
+  }, first: 1000) {
     edges {
       node {
         children {
@@ -52,6 +54,7 @@ export const ARTISTSRAW = `
               id
               name
               databaseId
+              link
             }
           }
         }
@@ -65,11 +68,22 @@ export const ARTISTS = `query {
 }
 `
 export const CATEOGIRESRAW = `
-    categories {
+  categories(first: 1000) {
     edges {
       node {
         id
         name
+        link
+        children {
+          edges {
+            node {
+              id
+              name
+              databaseId
+              link
+            }
+          }
+        }
       }
     }
   }
@@ -80,11 +94,12 @@ export const CATEOGIRES = `query {
 `
 
 export const TAGSRAW = `
-  tags {
+  tags(first: 1000) {
     edges {
       node {
         id
         name
+        link
       }
     }
   }

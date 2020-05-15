@@ -62,6 +62,7 @@ export default function Search() {
                   cat={item.categories}
                   tags={item.tags}
                   name={item.title}
+                  link={item.link}
                 />
               </Grid>
             ))}
