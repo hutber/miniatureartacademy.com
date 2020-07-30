@@ -1,5 +1,4 @@
 export const POSTSRAW = `
-posts(where: {categoryIn: "132"},first: 20) {
     edges {
       node {
         title
@@ -17,6 +16,7 @@ posts(where: {categoryIn: "132"},first: 20) {
               id
               name
               link
+              databaseId
             }
           }
         }
@@ -29,18 +29,24 @@ posts(where: {categoryIn: "132"},first: 20) {
             node {
               id
               name
+              databaseId
               link
             }
           }
         }
       }
     }
+`
+export const ALLPOSTS = `
+  posts(where: {categoryIn: "132"},first: 24) {
+    ${POSTSRAW}
   }
 `
-export const POSTS = `query {
-  ${POSTSRAW}
-}
-`
+export const POSTS = `query ($tagIn: [ID], $categoryIn: [ID]) {
+  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn}, first: 56) {
+    ${POSTSRAW}
+  }
+}`
 
 export const ARTISTSRAW = `
   artists: categories(where: {
@@ -68,12 +74,13 @@ export const ARTISTS = `query {
 }
 `
 export const CATEOGIRESRAW = `
-  categories(first: 1000) {
+  categories(first: 1000, where:{exclude:[132]}) {
     edges {
       node {
         id
         name
         link
+        databaseId
         children {
           edges {
             node {
@@ -94,12 +101,13 @@ export const CATEOGIRES = `query {
 `
 
 export const TAGSRAW = `
-  tags(first: 1000) {
+  tags(first: 1000, where: {hideEmpty: true}) {
     edges {
       node {
         id
         name
         link
+        databaseId
       }
     }
   }
@@ -108,8 +116,14 @@ export const TAGS = `query {
   ${TAGSRAW}
 }`
 
+export const SEARCH_POSTS = `query($search: String){
+  posts(where: {search: $search}){
+    ${POSTSRAW}
+  }
+}`
+
 export const QUERYALL = `query{
-  ${POSTSRAW}
+  ${ALLPOSTS}
   ${ARTISTSRAW}
   ${CATEOGIRESRAW}
   ${TAGSRAW}

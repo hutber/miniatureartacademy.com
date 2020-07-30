@@ -4,6 +4,9 @@ const configSetup = {
   local: {
     url: 'https://miniatureartacademy.com/',
     redirect: '/bad',
+    graphQL: {
+      categoryArtistId: '132',
+    },
   },
 }
 

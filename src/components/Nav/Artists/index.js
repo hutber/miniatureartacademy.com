@@ -1,30 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
 import FaceIcon from '@material-ui/icons/Face'
 
-import { useStoreState } from 'easy-peasy'
-import styles from './styles'
+import Autocomplete from '../AutoComplete'
 
 export default function Search() {
-  const classes = styles()
-  const [selected, setSelected] = useState('')
-  const { artists } = useStoreState(store => ({
+  const { artists, selectedArtists } = useStoreState(store => ({
     artists: store.artists.artists,
+    setArtists: store.artists.setArtists,
+  }))
+  const { setSelectedArtists } = useStoreActions(actions => ({
+    setSelectedArtists: actions.artists.setSelectedArtists,
   }))
 
   return (
-    <>
-      <FaceIcon />
-      <Select
-        value={selected}
-        onChange={({ target: { value } }) => {
-          setSelected(value)
-        }}
-      >
-        {artists && artists.map(item => <MenuItem value={item.databaseId}>{item.name}</MenuItem>)}
-      </Select>
-    </>
+    <Autocomplete title="Artists" options={artists} defaultValue={selectedArtists} setSelected={setSelectedArtists} />
   )
 }

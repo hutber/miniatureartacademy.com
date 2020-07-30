@@ -46,7 +46,7 @@ async function FetchApi({ dispatch = () => {}, postType = 'pages', body = {}, me
   }
 }
 
-export const getQuery = async QUERY => {
+export const getQuery = async (QUERY, options) => {
   const getData = {
     url: 'graphql',
     method: 'POST',
@@ -55,6 +55,7 @@ export const getQuery = async QUERY => {
     },
     body: {
       query: QUERY,
+      ...options,
     },
   }
   const { data: queryData } = await FetchApi(getData)

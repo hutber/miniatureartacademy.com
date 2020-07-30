@@ -36,7 +36,7 @@ export const adminNavItems = [
     url: '/admin/awards',
   },
   {
-    name: 'Award Type',
+    name: 'Video Type',
     url: '/admin/award_type',
   },
   {

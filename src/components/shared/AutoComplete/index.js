@@ -17,6 +17,7 @@ export default function({
   defaultValue,
   options,
   title,
+  ...rest
   // columnDef: { lookup = [], title, labelTitle, labelValue, field },
 }) {
   const classes = useStyles()
@@ -36,6 +37,7 @@ export default function({
         disableCloseOnSelect
         getOptionLabel={option => option.name}
         renderInput={params => <TextField {...params} variant="outlined" label={title} fullWidth />}
+        {...rest}
       />
     </div>
   )

@@ -5,11 +5,10 @@ import { red } from '@material-ui/core/colors'
 const theme = createMuiTheme({
   typography: {
     fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
-    fontSize: 14,
   },
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#ff6620',
       title: '#545a5f',
       description: '#939aa0',
       hover: '#303437',
@@ -25,6 +24,76 @@ const theme = createMuiTheme({
     },
     background: {
       default: '#fff',
+    },
+  },
+  overrides: {
+    // Style sheet name ⚛️
+    MuiAutocomplete: {
+      root: {
+        color: 'white',
+        cursor: 'pointer',
+      },
+      endAdornment: {
+        color: '#b0bec5',
+      },
+      popupIndicator: {
+        color: '#b0bec5',
+      },
+    },
+    MuiFormLabel: {
+      root: {
+        color: '#FFF',
+      },
+    },
+    MuiGrid: {
+      spacing: {
+        xs: {
+          2: {
+            margin: '-16px',
+          },
+        },
+      },
+      container: {
+        background: '#243238',
+      },
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: '#d7d7d7',
+      },
+    },
+    MuiLink: {
+      root: {
+        cursor: 'pointer',
+      },
+    },
+    MuiChip: {
+      root: {
+        height: 'auto',
+      },
+    },
+    MuiTypography: {
+      h6: {
+        fontWeight: 400,
+      },
+    },
+    MuiOutlinedInput: {
+      notchedOutline: {
+        borderColor: 'transparent',
+        '&:hover': {
+          borderColor: 'transparent',
+        },
+      },
+    },
+    MuiInput: {
+      input: {
+        background: 'white',
+        padding: '7px 10px',
+        borderColor: 'transparent',
+        '&:hover': {
+          borderColor: 'transparent',
+        },
+      },
     },
   },
 })

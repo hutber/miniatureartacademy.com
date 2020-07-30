@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { Grid } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
 
+import Loading from '../shared/Loading'
 import Arists from './Artists'
 import Search from './Search'
 import Tags from './Tags'
@@ -14,22 +14,20 @@ export default function() {
   const classes = styles()
 
   return (
-    <Grid className={classes.navContainer} container>
-      <Grid item sm={1}>
+    <Grid className={classes.navContainer} container spacing={2}>
+      <Grid item xs={12} sm={3}>
         <Arists />
       </Grid>
-      <Grid item sm={4}>
-        <Search />
-      </Grid>
-      <Grid item sm={2}>
-        <Tags />
-      </Grid>
-      <Grid item sm={2}>
+      <Grid item xs={12} sm={3}>
         <Categories />
       </Grid>
-      <Grid item sm={1}>
-        <Button>Clear Filters</Button>
+      <Grid item xs={12} sm={2}>
+        <Tags />
       </Grid>
+      <Grid item xs={12} sm={4} alignContent="center">
+        <Search />
+      </Grid>
+      <Loading />
     </Grid>
   )
 }
