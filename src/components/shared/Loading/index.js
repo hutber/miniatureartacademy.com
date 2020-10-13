@@ -7,10 +7,10 @@ import styles from './styles'
 
 export default () => {
   const classes = styles()
-  const loading = useStoreState(state => state.loading.state)
+  const isLoading = useStoreState(state => state.loading.isLoading)
   return (
     <>
-      {loading && (
+      {isLoading && (
         <div className={classes.loading}>
           <LinearProgress />
         </div>

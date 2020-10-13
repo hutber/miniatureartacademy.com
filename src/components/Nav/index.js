@@ -10,7 +10,7 @@ import Categories from './Categories'
 
 import styles from './styles'
 
-export default function() {
+export default function({ fetchData }) {
   const classes = styles()
 
   return (
@@ -24,8 +24,8 @@ export default function() {
       <Grid item xs={12} sm={2}>
         <Tags />
       </Grid>
-      <Grid item xs={12} sm={4} alignContent="center">
-        <Search />
+      <Grid item xs={12} sm={4}>
+        <Search fetchData={fetchData} />
       </Grid>
       <Loading />
     </Grid>

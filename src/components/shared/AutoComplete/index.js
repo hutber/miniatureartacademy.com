@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > * + *': {
       marginTop: theme.spacing(2),
+      display: 'none',
     },
   },
 }))
@@ -17,18 +18,21 @@ export default function({
   defaultValue,
   options,
   title,
+  disabled,
   ...rest
   // columnDef: { lookup = [], title, labelTitle, labelValue, field },
 }) {
   const classes = useStyles()
   // const options = defaultValue ? findRemovedItems(defaultValue, lookup) : lookup
-
   return (
     <div className={classes.root}>
       <Autocomplete
         multiple
+        disabled={disabled}
+        disablePortal={disabled}
+        selectOnFocus
         options={options}
-        filterSelectedOptions
+        filterSelectedOptions={true}
         defaultValue={defaultValue || []}
         onChange={onChange}
         groupBy={option => {
@@ -36,7 +40,6 @@ export default function({
         }}
         disableCloseOnSelect
         getOptionLabel={option => option.name}
-        renderInput={params => <TextField {...params} variant="outlined" label={title} fullWidth />}
         {...rest}
       />
     </div>

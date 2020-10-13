@@ -1,18 +1,18 @@
 import { thunk, action } from 'easy-peasy'
 
 const initalValues = {
-  state: false,
+  isLoading: false,
 }
 
 export default {
   ...initalValues,
   toggleLoading: action(state => {
-    state.state = !state.state
+    state.isLoading = !state.isLoading
   }),
   stopLoading: action(state => {
-    state.state = false
+    state.isLoading = false
   }),
   startLoading: action(state => {
-    state.state = true
+    state.isLoading = true
   }),
 }

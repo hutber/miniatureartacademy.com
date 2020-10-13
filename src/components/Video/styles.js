@@ -18,7 +18,13 @@ export default makeStyles(theme => ({
     margin: 4,
     padding: '4px 3px',
   },
-  link: {},
+  link: {
+    display: 'inline-block',
+    cursor: 'pointer',
+    '& *': {
+      pointerEvents: 'none',
+    },
+  },
   tag: {
     background: '#929292',
     color: '#000',

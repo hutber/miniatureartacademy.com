@@ -3,14 +3,12 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 
 import Grid from '@material-ui/core/Grid'
 
-import config from 'config'
-
-import Loading from 'components/shared/Loading'
 import { QUERYALL } from 'queries/posts'
 import { getQuery } from 'lib/fetch/fetchApi'
 
 import TransformDataClass from 'lib/apollo/apollo.class'
 import Award from '../Video'
+import Spinner from 'components/shared/Loading/spinner'
 import Nav from '../Nav'
 
 export default function Search() {
@@ -23,16 +21,17 @@ export default function Search() {
     searchResults: store.posts.searchResults,
   }))
 
-  const { setTags, setCategories, setPosts, toggleLoading, setArtists } = useStoreActions(actions => ({
+  const { setTags, setCategories, setPosts, stopLoading, startLoading, setArtists } = useStoreActions(actions => ({
     setTags: actions.tags.setTags,
     setCategories: actions.categories.setCategories,
     setPosts: actions.posts.setPosts,
     setArtists: actions.artists.setArtists,
-    toggleLoading: actions.loading.toggleLoading,
+    stopLoading: actions.loading.stopLoading,
+    startLoading: actions.loading.startLoading,
   }))
 
   async function fetchData() {
-    toggleLoading()
+    startLoading()
     const {
       posts: getPosts,
       tags: getTags,
@@ -45,7 +44,7 @@ export default function Search() {
     setPosts(getPosts)
     setCategories(getCategories)
     setArtists(artistData)
-    toggleLoading()
+    stopLoading()
   }
 
   useEffect(() => {
@@ -62,7 +61,8 @@ export default function Search() {
 
   return (
     <>
-      <Nav />
+      <Spinner />
+      <Nav fetchData={fetchData} />
       {posts && (
         <Grid container spacing={2}>
           {currentPosts.map(item => (

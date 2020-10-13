@@ -8,20 +8,35 @@ import { SEARCH_POSTS } from '../../../queries/posts'
 
 import styles from './styles'
 
-export default function Search() {
+export default function Search({ fetchData }) {
   const classes = styles()
   const { searchText } = useStoreState(store => ({
     searchText: store.posts.searchText,
   }))
-  const { setSearchPosts, setSearchText, toggleLoading, resetSearchPosts } = useStoreActions(actions => ({
+  const {
+    setSearchPosts,
+    setSearchText,
+    toggleLoading,
+    resetSearchPosts,
+    setSelectedCategories,
+    setSelectedArtists,
+    setSelectedTags,
+  } = useStoreActions(actions => ({
     setSearchPosts: actions.posts.setSearchPosts,
     setSearchText: actions.posts.setSearchText,
     toggleLoading: actions.loading.toggleLoading,
     resetSearchPosts: actions.posts.resetSearchPosts,
+    setSelectedCategories: actions.categories.setSelectedCategories,
+    setSelectedArtists: actions.artists.setSelectedArtists,
+    setSelectedTags: actions.tags.setSelectedTags,
   }))
 
   const clearFilters = () => {
     resetSearchPosts()
+    fetchData()
+    setSelectedCategories([])
+    setSelectedArtists([])
+    setSelectedTags([])
   }
 
   const handleChange = async event => {

@@ -10,7 +10,7 @@ export const POSTSRAW = `
           id
           name
         }
-        categories {
+        categories(where: {shouldOutputInFlatList: true}) {
           edges {
             node {
               id
@@ -38,7 +38,7 @@ export const POSTSRAW = `
     }
 `
 export const ALLPOSTS = `
-  posts(where: {categoryIn: "132"},first: 24) {
+  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn}, first: 40) {
     ${POSTSRAW}
   }
 `
@@ -122,7 +122,7 @@ export const SEARCH_POSTS = `query($search: String){
   }
 }`
 
-export const QUERYALL = `query{
+export const QUERYALL = `query ($tagIn: [ID], $categoryIn: [ID]) {
   ${ALLPOSTS}
   ${ARTISTSRAW}
   ${CATEOGIRESRAW}

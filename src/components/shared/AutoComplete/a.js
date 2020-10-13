@@ -60,7 +60,6 @@ export default function AutoComplete({ data, label = 'Select', placeholder = 'Se
       },
     },
   }
-  console.info(data)
   return (
     <div className={classes.root}>
       <NoSsr>
@@ -82,7 +81,6 @@ export default function AutoComplete({ data, label = 'Select', placeholder = 'Se
             labelId="demo-mutiple-checkbox-label"
           >
             {data.map(({ name, value }) => {
-              console.info(name, value)
               return (
                 <MenuItem key={value} value={value}>
                   <Checkbox checked={multi && multi.indexOf(value) > -1} />

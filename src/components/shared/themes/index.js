@@ -54,7 +54,7 @@ const theme = createMuiTheme({
         },
       },
       container: {
-        background: '#243238',
+        background: '#FFF',
       },
     },
     MuiPaper: {

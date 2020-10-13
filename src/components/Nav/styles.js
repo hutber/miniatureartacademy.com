@@ -4,6 +4,7 @@ export default makeStyles(theme => ({
   navContainer: {
     background: '#243238',
     position: 'relative',
+    marginBottom: 10,
   },
   clearFilters: {
     background: '#44677b',
