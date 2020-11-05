@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Grid } from '@material-ui/core'
 
-import Loading from '../shared/Loading'
 import Arists from './Artists'
 import Search from './Search'
 import Tags from './Tags'
@@ -27,7 +26,6 @@ export default function({ fetchData }) {
       <Grid item xs={12} sm={4}>
         <Search fetchData={fetchData} />
       </Grid>
-      {/*<Loading />*/}
     </Grid>
   )
 }
