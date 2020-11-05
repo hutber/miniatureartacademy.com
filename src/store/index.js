@@ -1,4 +1,4 @@
-import { action, createStore } from 'easy-peasy'
+import { createStore } from 'easy-peasy'
 
 import loading from './loading'
 import posts from './posts'

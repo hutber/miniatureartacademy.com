@@ -8,4 +8,7 @@ export default makeStyles(theme => ({
     left: 0,
     bottom: -10,
   },
+  backdrop: {
+    zIndex: 1,
+  },
 }))

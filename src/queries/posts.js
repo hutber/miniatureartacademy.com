@@ -38,35 +38,27 @@ export const POSTSRAW = `
     }
 `
 export const ALLPOSTS = `
-  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn}, first: 40) {
+  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn}, first: 60) {
     ${POSTSRAW}
   }
 `
-export const POSTS = `query ($tagIn: [ID], $categoryIn: [ID]) {
-  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn}, first: 56) {
+export const POSTS = `query ($tagIn: [ID], $categoryIn: [ID], $authorIn: [ID]) {
+  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn}, first: 56) {
     ${POSTSRAW}
   }
 }`
 
 export const ARTISTSRAW = `
-  artists: categories(where: {
-    termTaxonomId: [132]
-  }, first: 1000) {
+  users(where: {hasPublishedPosts: POST, nicenameNotIn: ["Baban", "root"]}) {
     edges {
       node {
-        children {
-          edges {
-            node {
-              id
-              name
-              databaseId
-              link
-            }
-          }
-        }
+        id
+        databaseId
+        name
       }
     }
   }
+
 `
 
 export const ARTISTS = `query {
@@ -122,7 +114,7 @@ export const SEARCH_POSTS = `query($search: String){
   }
 }`
 
-export const QUERYALL = `query ($tagIn: [ID], $categoryIn: [ID]) {
+export const QUERYALL = `query ($tagIn: [ID], $categoryIn: [ID], $authorIn: [ID]) {
   ${ALLPOSTS}
   ${ARTISTSRAW}
   ${CATEOGIRESRAW}

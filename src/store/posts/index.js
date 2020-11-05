@@ -1,4 +1,4 @@
-import { thunk, action } from 'easy-peasy'
+import { action } from 'easy-peasy'
 
 const initalValues = {
   posts: [],

@@ -14,7 +14,6 @@ export default () => {
     <>
       {isLoading && (
         <>
-          <LinearProgress />
           <Backdrop className={classes.backdrop} open={isLoading}>
             <CircularProgress />
           </Backdrop>

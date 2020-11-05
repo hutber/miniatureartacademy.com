@@ -14,7 +14,7 @@ export default function({ fetchData }) {
   const classes = styles()
 
   return (
-    <Grid className={classes.navContainer} container spacing={2}>
+    <Grid className={classes.navContainer} container spacing={0}>
       <Grid item xs={12} sm={3}>
         <Arists />
       </Grid>
@@ -27,7 +27,7 @@ export default function({ fetchData }) {
       <Grid item xs={12} sm={4}>
         <Search fetchData={fetchData} />
       </Grid>
-      <Loading />
+      {/*<Loading />*/}
     </Grid>
   )
 }

@@ -49,7 +49,8 @@ const theme = createMuiTheme({
       spacing: {
         xs: {
           2: {
-            margin: '-16px',
+            padding: 0,
+            margin: '0 -16px 0 -16px',
           },
         },
       },

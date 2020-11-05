@@ -1,8 +1,6 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { makeStyles } from '@material-ui/core/styles'
-import { findRemovedItems } from 'utils/materialTable'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,9 +26,9 @@ export default function({
     <div className={classes.root}>
       <Autocomplete
         multiple
-        disabled={disabled}
+        // disabled={disabled}
         disablePortal={disabled}
-        selectOnFocus
+        // selectOnFocus
         options={options}
         filterSelectedOptions={true}
         defaultValue={defaultValue || []}
