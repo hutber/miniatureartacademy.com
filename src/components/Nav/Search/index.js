@@ -61,10 +61,10 @@ export default function Search({ fetchData }) {
 
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
+      <TextField placeholder="Search..." value={searchText} onChange={handleChange} />
       <Button className={classes.clearFilters} onClick={clearFilters}>
         Clear
       </Button>
-      <TextField placeholder="Search..." value={searchText} onChange={handleChange} />
     </form>
   )
 }

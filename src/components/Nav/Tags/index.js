@@ -11,6 +11,5 @@ export default function Search() {
   const { setSelectedTags } = useStoreActions(actions => ({
     setSelectedTags: actions.tags.setSelectedTags,
   }))
-
-  return <Autocomplete title="Tags" options={tags} defaultValue={selectedTags} setSelected={setSelectedTags} />
+  return <Autocomplete title="Tags" options={tags} value={selectedTags} setSelected={setSelectedTags} />
 }

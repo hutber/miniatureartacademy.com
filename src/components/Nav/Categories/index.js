@@ -8,9 +8,6 @@ export default function Search() {
   const { selectedCategories, categories } = useStoreState(store => ({
     categories: store.categories.categories,
     selectedCategories: store.categories.selectedCategories,
-    tags: store.tags.tags,
-    selectedTags: store.tags.selectedTags,
-    selectedArtists: store.artists.selectedArtists,
     isLoading: store.loading.isLoading,
   }))
 
@@ -20,7 +17,6 @@ export default function Search() {
 
   const flattenData = data => {
     return data.reduce((acc, cur) => {
-      if (cur.children && cur.children.length === 0) return acc
       cur.children.forEach(childItem => {
         acc.push({
           ...childItem,
@@ -47,9 +43,11 @@ export default function Search() {
       // disabled={isLoading}
       title="Categories"
       filterOptions={(allOptions, { inputValue }) => {
-        return allOptions.filter(
-          item => selectedCategories.findIndex(selectedItem => selectedItem.databaseId === item.databaseId) === -1
-        )
+        return allOptions
+          .filter(
+            item => selectedCategories.findIndex(selectedItem => selectedItem.databaseId === item.databaseId) === -1
+          )
+          .filter(i => i.name.toLowerCase().includes(inputValue.toLowerCase()))
       }}
     />
   )

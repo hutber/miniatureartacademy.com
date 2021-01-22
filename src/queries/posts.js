@@ -7,10 +7,12 @@ export const POSTSRAW = `
         commentCount
         date
         author {
-          id
-          name
+          node {
+            id
+            name
+          }
         }
-        categories(where: {shouldOutputInFlatList: true}) {
+        categories(first: 300, where: {hierarchical: true}) {
           edges {
             node {
               id
@@ -21,8 +23,10 @@ export const POSTSRAW = `
           }
         }
         featuredImage {
-          id
-          mediaItemUrl
+          node {
+            id
+            mediaItemUrl
+          }
         }
         tags {
           edges {
@@ -43,13 +47,13 @@ export const ALLPOSTS = `
   }
 `
 export const POSTS = `query ($tagIn: [ID], $categoryIn: [ID], $authorIn: [ID]) {
-  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn}, first: 56) {
+  posts(first: 100, where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn}, first: 56) {
     ${POSTSRAW}
   }
 }`
 
 export const ARTISTSRAW = `
-  users(where: {hasPublishedPosts: POST, nicenameNotIn: ["Baban", "root"]}) {
+  users(first: 100, where: {hasPublishedPosts: POST, nicenameNotIn: ["Baban", "root"]}) {
     edges {
       node {
         id
@@ -76,10 +80,18 @@ export const CATEOGIRESRAW = `
         children {
           edges {
             node {
-              id
               name
               databaseId
               link
+              posts {
+                nodes {
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -109,9 +121,15 @@ export const TAGS = `query {
 }`
 
 export const SEARCH_POSTS = `query($search: String){
-  posts(where: {search: $search}){
+  posts(first: 100,where: {search: $search}){
     ${POSTSRAW}
   }
+}`
+
+export const QUERY_ARTISTS_CAT_TAGS = `query {
+  ${ARTISTSRAW}
+  ${CATEOGIRESRAW}
+  ${TAGSRAW}
 }`
 
 export const QUERYALL = `query ($tagIn: [ID], $categoryIn: [ID], $authorIn: [ID]) {

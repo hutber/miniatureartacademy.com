@@ -30,8 +30,10 @@ const theme = createMuiTheme({
     // Style sheet name ⚛️
     MuiAutocomplete: {
       root: {
-        color: 'white',
         cursor: 'pointer',
+      },
+      inputFocused: {
+        color: 'white',
       },
       endAdornment: {
         color: '#b0bec5',
@@ -79,6 +81,9 @@ const theme = createMuiTheme({
       },
     },
     MuiOutlinedInput: {
+      root: {
+        color: '#FFF',
+      },
       notchedOutline: {
         borderColor: 'transparent',
         '&:hover': {

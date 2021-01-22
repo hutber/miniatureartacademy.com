@@ -9,10 +9,10 @@ export default function Search({ title, options, defaultValue, setSelected, ...r
   const { isLoading } = useStoreState(store => ({
     isLoading: store.loading.isLoading,
   }))
-  // let timer
 
   return (
     <Autocomplete
+      {...rest}
       disabled={isLoading}
       defaultValue={defaultValue}
       options={options.map(item => {
@@ -24,7 +24,6 @@ export default function Search({ title, options, defaultValue, setSelected, ...r
         setSelected(item)
       }}
       renderInput={params => <TextField {...params} variant="outlined" label={title} fullWidth />}
-      {...rest}
     />
   )
 }

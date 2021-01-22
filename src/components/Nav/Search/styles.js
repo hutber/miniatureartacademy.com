@@ -6,9 +6,11 @@ export default makeStyles(theme => ({
     color: '#fff',
     borderRadius: 4,
     fontSize: 12,
-    marginRight: 5,
+    marginLeft: 5,
   },
   form: {
-    marginTop: 10,
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center'
   },
 }))
