@@ -13,7 +13,9 @@ import Nav from '../Nav'
 import styles from './styles'
 
 const getCatgeoriesFromUrl = () => {
-  const urlParams = new URLSearchParams(window.location.hash.split('#')[1])
+  const urlStuff = window.location.hash.split('#')
+  if (urlStuff < 2) return {}
+  const urlParams = new URLSearchParams(urlStuff[1])
   const removeUnderscore = item => item.replace(/_/g, ' ').toLowerCase()
   const getParams = name => {
     const startCat = urlParams.get(name)
@@ -27,8 +29,6 @@ const getCatgeoriesFromUrl = () => {
   }
 }
 
-let initalPageLoad = true
-
 export default function Search() {
   const classes = styles()
   const [currentPosts, setCurrentPosts] = useState([])
@@ -37,10 +37,11 @@ export default function Search() {
     posts: store.posts.posts,
   }))
 
-  const { selectedTags, selectedCategories, searchResults, selectedArtists } = useStoreState(store => ({
+  const { selectedTags, isLoading, selectedCategories, searchResults, selectedArtists } = useStoreState(store => ({
     searchResults: store.posts.searchResults,
     tags: store.tags.tags,
     selectedTags: store.tags.selectedTags,
+    isLoading: store.loading.isLoading,
     artists: store.artists.artists,
     selectedCategories: store.categories.selectedCategories,
     selectedArtists: store.artists.selectedArtists,
@@ -111,15 +112,14 @@ export default function Search() {
       setSelectedArtists(URLartists)
       setSelectedTags(URLTags)
       setSelectedCategories(URLCategories)
-      setUrlSelected(true)
     }
+    setUrlSelected(true)
 
     stopLoading()
   }
 
   useEffect(() => {
-    fetchData(initalPageLoad)
-    initalPageLoad = false // eslint-disable-next-line
+    fetchData(true)
   }, [])
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function Search() {
       <Spinner />
       <Nav fetchData={fetchData} />
       {posts && (
-        <Grid container spacing={2} className={classes.search}>
+        <Grid container spacing={2} className={classes.search} {...(isLoading && { minHeight: 500 })}>
           {currentPosts.map(item => (
             <Grid item key={item.title} xl={2} lg={3} md={4} sm={6} xs={12}>
               <Award
@@ -158,6 +158,14 @@ export default function Search() {
             </Grid>
           ))}
         </Grid>
+      )}
+      {isLoading && <div style={{ display: 'flex', alignItems: 'center', height: 'calc(100vh - 250px)' }} />}
+      {posts.length === 0 && !isLoading && (
+        <div style={{ display: 'flex', alignItems: 'center', height: 'calc(100vh - 250px)' }}>
+          <h2 style={{ width: '80%', margin: '0 auto' }}>
+            We are sorry, but no videos can be found with these search terms. We suggest you use fewer filters
+          </h2>
+        </div>
       )}
     </>
   )

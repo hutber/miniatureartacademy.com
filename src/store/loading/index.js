@@ -2,6 +2,7 @@ import { action } from 'easy-peasy'
 
 const initalValues = {
   isLoading: false,
+  initalLoadHasFinished: false,
 }
 
 export default {
@@ -11,5 +12,8 @@ export default {
   }),
   startLoading: action(state => {
     state.isLoading = true
+  }),
+  changeInitalLoadingState: action(state => {
+    state.initalLoadHasFinished = true
   }),
 }

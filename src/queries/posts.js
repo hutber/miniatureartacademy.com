@@ -42,12 +42,12 @@ export const POSTSRAW = `
     }
 `
 export const ALLPOSTS = `
-  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn}, first: 60) {
+  posts(where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn, categoryNotIn: [380]}, first: 36) {
     ${POSTSRAW}
   }
 `
 export const POSTS = `query ($tagIn: [ID], $categoryIn: [ID], $authorIn: [ID]) {
-  posts(first: 100, where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn}, first: 56) {
+  posts(first: 100, where: {categoryIn: $categoryIn, tagIn: $tagIn, authorIn: $authorIn, categoryNotIn: [380]}, first: 56) {
     ${POSTSRAW}
   }
 }`

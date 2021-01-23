@@ -27,7 +27,7 @@ export default function({
       <Autocomplete
         multiple
         // disabled={disabled}
-        disablePortal={disabled}
+        // disablePortal={disabled}
         // selectOnFocus
         options={options}
         filterSelectedOptions={true}
@@ -36,7 +36,7 @@ export default function({
         groupBy={option => {
           return option.parent
         }}
-        disableCloseOnSelect
+        // disableCloseOnSelect
         getOptionLabel={option => option.name}
         {...rest}
       />

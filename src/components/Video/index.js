@@ -46,7 +46,15 @@ export default function RecipeReviewCard({ img, name, date, cat, tags, position,
           <span>
             {categories &&
               categories.map(item => (
-                <Link href={item.link} underline="none" key={item.link} onClick={setCat} className={classes.link}>
+                <Link
+                  href={item.link}
+                  underline="none"
+                  key={item.link}
+                  onClick={el => {
+                    // setCat(el)
+                  }}
+                  className={classes.link}
+                >
                   <Typography variant="body2" color="textSecondary" component="div">
                     <Chip key={item.name} label={item.name} className={classes.cat} />
                   </Typography>
